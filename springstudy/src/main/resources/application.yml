@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    url: jdbc:h2:tcp://localhost/~/likelion
+
+  jpa:
+    hibernate:
+      ddl-auto: create    # release할 때는 none으로 변경
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
