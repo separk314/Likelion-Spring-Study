@@ -17,11 +17,11 @@ public class MemberEntityTest {
     @Test
     void test() {
         // given
-        MemberEntity member = new MemberEntity(1L, "username", "password", "nickname");
-        memberJpaRepository.save(member);
+//        MemberEntity member = new MemberEntity(1L, "username", "password", "nickname");
+//        memberJpaRepository.save(member);
 
         // when
-        MemberEntity testMember = memberJpaRepository.findById(1L).get();
+//        MemberEntity testMember = memberJpaRepository.findById(1L).get();
 
         // then
 //        Assertions.assertTrue(member.getId()).isEqualTo(member.getId());

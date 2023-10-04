@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter @Setter
+@Getter
 @Table(name = "member") // 테이블명을 명시하지 않으면 클래스명(Member_Entity)을 테이블명으로 사용
 public class MemberEntity {
 
@@ -42,17 +42,22 @@ public class MemberEntity {
     @Column(nullable = true, name = "deleted_at")
     private LocalDate deleteAt;
 
-    @OneToOne(mappedBy = "member")
+    @OneToOne
     private BoxEntity box;
 
-    @OneToMany(mappedBy = "sender")
-    private List<LetterEntity> lettersSent;
+    /*
+        생성 패턴: 빌더 패턴, 팩토리 메소드 패턴
+     */
+//    @Builder
+//    public MemberEntity(Long id, String username, String password, String nickname) {
+//        this.id = id;
+//        this.username = username;
+//        this.password = password;
+//        this.nickname = nickname;
+//    }
 
-    @Builder
-    public MemberEntity(Long id, String username, String password, String nickname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    // 회원 닉네임 업데이트
+    public void updateNickname(String nickname) {
         this.nickname = nickname;
     }
 }
