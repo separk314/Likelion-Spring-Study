@@ -12,10 +12,8 @@ public class LetterCreateRequestDto {
 
     private String title;
     private String content;
-    private MemberEntity sender;
-    private BoxEntity box;
 
-    public static LetterEntity toLetter(String title, String content, BoxEntity box) {
-        return new LetterEntity(title, content, box);
+    public static LetterEntity toLetter(String title, String content) {
+        return new LetterEntity(title, content);
     }
 }

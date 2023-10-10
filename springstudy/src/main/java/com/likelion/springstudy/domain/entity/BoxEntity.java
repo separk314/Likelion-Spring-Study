@@ -2,9 +2,9 @@ package com.likelion.springstudy.domain.entity;
 
 import com.likelion.springstudy.domain.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -36,4 +36,10 @@ public class BoxEntity extends BaseTimeEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private MemberEntity member;
+
+    @Builder
+    public BoxEntity(String name, MemberEntity member) {
+        this.name = name;
+        this.member = member;
+    }
 }

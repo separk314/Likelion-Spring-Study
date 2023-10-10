@@ -38,7 +38,7 @@ public class MemberEntity {
     /*
         생성 패턴: 빌더 패턴, 팩토리 메소드 패턴
      */
-//    @Builder
+    @Builder
     public MemberEntity(String name, String nickname) {
         this.name = name;
         this.nickname = nickname;

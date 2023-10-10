@@ -5,13 +5,11 @@ import com.likelion.springstudy.dto.response.member.MemberGetResponseDto;
 import com.likelion.springstudy.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.*;
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-//@Transactional(readOnly = true)
+@Transactional(readOnly = true)
 public class MemberService {
 
     private final MemberRepository memberRepository;

@@ -2,6 +2,7 @@ package com.likelion.springstudy.domain.entity;
 
 import com.likelion.springstudy.domain.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -42,9 +43,9 @@ public class LetterEntity extends BaseTimeEntity {
     @JoinColumn(name = "box_id")    // 실제로는 box_id 컬럼이 생성됨
     private BoxEntity box;
 
-    public LetterEntity(String title, String content, BoxEntity box) {
+    @Builder
+    public LetterEntity(String title, String content) {
         this.title = title;
         this.content = content;
-        this.box = box;
     }
 }

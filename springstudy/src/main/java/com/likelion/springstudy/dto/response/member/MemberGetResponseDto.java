@@ -14,6 +14,6 @@ public class MemberGetResponseDto {
     private String nickname;
 
     public static MemberGetResponseDto of(MemberEntity member) {
-        return new MemberGetResponseDto(member.getUsername(), member.getNickname());
+        return new MemberGetResponseDto(member.getName(), member.getNickname());
     }
 }
