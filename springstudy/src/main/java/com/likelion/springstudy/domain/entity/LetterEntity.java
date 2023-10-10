@@ -44,8 +44,9 @@ public class LetterEntity extends BaseTimeEntity {
     private BoxEntity box;
 
     @Builder
-    public LetterEntity(String title, String content) {
+    public LetterEntity(String title, String content, BoxEntity box) {
         this.title = title;
         this.content = content;
+        this.box = box;
     }
 }

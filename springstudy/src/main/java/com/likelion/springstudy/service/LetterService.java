@@ -1,5 +1,6 @@
 package com.likelion.springstudy.service;
 
+import com.likelion.springstudy.domain.entity.BoxEntity;
 import com.likelion.springstudy.domain.entity.LetterEntity;
 import com.likelion.springstudy.dto.request.letter.LetterCreateRequestDto;
 import com.likelion.springstudy.repository.LetterRepository;
@@ -13,12 +14,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class LetterService {
 
     private final LetterRepository letterRepository;
+    private final BoxService boxService;
 
     public String create(LetterCreateRequestDto dto) {
+        BoxEntity box = boxService.findById(dto.getBoxId());
+
         LetterEntity letter = letterRepository.save(
                 LetterEntity.builder()
                         .title(dto.getTitle())
                         .content(dto.getContent())
+                        .box(box)
                         .build()
         );
         return letter.getId().toString();

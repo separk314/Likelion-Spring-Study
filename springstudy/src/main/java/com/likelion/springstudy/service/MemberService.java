@@ -1,6 +1,7 @@
 package com.likelion.springstudy.service;
 
 import com.likelion.springstudy.domain.entity.MemberEntity;
+import com.likelion.springstudy.dto.request.member.MemberCreateRequestDto;
 import com.likelion.springstudy.dto.response.member.MemberGetResponseDto;
 import com.likelion.springstudy.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+
+    public String create(MemberCreateRequestDto dto) {
+        MemberEntity savedMember = memberRepository.save(
+                MemberEntity.builder()
+                        .name(dto.getName())
+                        .nickname(dto.getNickname())
+                        .build()
+        );
+        return savedMember.getId().toString();
+    }
+
     public MemberGetResponseDto getById(Long memberId) {
         MemberEntity member = memberRepository.findById(memberId).get();
         /*

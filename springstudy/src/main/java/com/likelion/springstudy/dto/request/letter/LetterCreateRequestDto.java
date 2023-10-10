@@ -12,8 +12,5 @@ public class LetterCreateRequestDto {
 
     private String title;
     private String content;
-
-    public static LetterEntity toLetter(String title, String content) {
-        return new LetterEntity(title, content);
-    }
+    private Long boxId;
 }
