@@ -28,14 +28,6 @@ public class MemberEntity {
     @Column(nullable = false, unique = true, length = 20)
     private String nickname;
 
-    @CreatedDate
-    @Column(nullable = false, name = "created_at")
-    private LocalDateTime createdAt;
-
-    @LastModifiedDate
-    @Column(nullable = false, name = "updated_at")
-    private LocalDateTime updatedAt;
-
     @Column(nullable = true, name = "is_deleted")
     private Boolean isDeleted;
 
@@ -49,12 +41,12 @@ public class MemberEntity {
         생성 패턴: 빌더 패턴, 팩토리 메소드 패턴
      */
 //    @Builder
-//    public MemberEntity(Long id, String username, String password, String nickname) {
-//        this.id = id;
-//        this.username = username;
-//        this.password = password;
-//        this.nickname = nickname;
-//    }
+    public MemberEntity(Long id, String username, String password, String nickname) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.nickname = nickname;
+    }
 
     // 회원 닉네임 업데이트
     public void updateNickname(String nickname) {

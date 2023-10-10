@@ -1,5 +1,6 @@
 package com.likelion.springstudy.domain.entity;
 
+import com.likelion.springstudy.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "letter")
-public class LetterEntity {
+public class LetterEntity extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,11 +27,6 @@ public class LetterEntity {
 
 //    @Column(nullable = false, name = "photo_url")
 //    private String photoUrl;
-
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
 
     /*
         Letter에서만 box_id를 가짐: 단방향 연간관계
@@ -49,4 +45,11 @@ public class LetterEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")
     private MemberEntity sender;
+
+    public LetterEntity(String title, String content, BoxEntity box, MemberEntity sender) {
+        this.title = title;
+        this.content = content;
+        this.box = box;
+        this.sender = sender;
+    }
 }

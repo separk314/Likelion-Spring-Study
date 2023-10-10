@@ -11,4 +11,8 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
         - MemberEntity: 엔티티 클래스
         - Long: 엔티티 클래스의 PK 타입
      */
+
+//    default MemberEntity findByIdOrThrow(Long id) {
+//        return findById(id).orElseThrow(() => new EntityNotFOundException("해당하는 회원을 찾을 수 없음"));
+//    }
 }

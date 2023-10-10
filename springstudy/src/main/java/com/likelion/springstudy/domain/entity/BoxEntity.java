@@ -1,5 +1,6 @@
 package com.likelion.springstudy.domain.entity;
 
+import com.likelion.springstudy.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "box")
-public class BoxEntity {
+public class BoxEntity extends BaseTimeEntity {
 
 //    private static final int DEFAULT_LETTER_LIMIT = ;
 //    private int letterLimit = DEFAULT_LETTER_LIMIT;
