@@ -15,7 +15,16 @@ public class LetterService {
     private final LetterRepository letterRepository;
 
     public String create(LetterCreateRequestDto dto) {
-        LetterEntity letter = letterRepository.save(LetterCreateRequestDto.toLetter(dto.getTitle(), dto.getContent()));
+        LetterEntity letter = letterRepository.save(
+                LetterEntity.builder()
+                        .title(dto.getTitle())
+                        .content(dto.getContent())
+                        .build()
+        );
         return letter.getId().toString();
+    }
+
+    public LetterEntity getById(Long letterId) {
+        return letterRepository.findById(letterId).get();
     }
 }

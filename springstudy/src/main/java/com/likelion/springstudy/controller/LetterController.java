@@ -6,10 +6,7 @@ import com.likelion.springstudy.service.LetterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -25,5 +22,10 @@ public class LetterController {
         String letterId = letterService.create(dto);
         URI location = URI.create("api/letter/" + letterId);    // redirect url을 반환
         return ResponseEntity.created(location).build();    // redirect url을 반환
+    }
+
+    @GetMapping("/{letterId}")
+    public ResponseEntity<LetterEntity> getLetter(@PathVariable("letterId") Long letterId) {
+        return ResponseEntity.ok(letterService.getById(letterId));
     }
 }
