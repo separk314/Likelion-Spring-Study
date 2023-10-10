@@ -17,7 +17,7 @@ public class MemberEntityTest {
     @Test
     void test() {
         // given
-        MemberEntity member = new MemberEntity(1L, "username", "password", "nickname");
+        MemberEntity member = new MemberEntity("name", "nickname");
 //        memberJpaRepository.save(member);
 
         // when

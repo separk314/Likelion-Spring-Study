@@ -20,31 +20,27 @@ public class MemberEntity {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String username;
+    private String name;
 
-    @Column(nullable = false)
-    private String password;
+//    @Column(nullable = false)
+//    private String password;
 
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(nullable = false, length = 20)
     private String nickname;
 
-    @Column(nullable = true, name = "is_deleted")
-    private Boolean isDeleted;
+//    @Column(nullable = true, name = "is_deleted")
+//    private Boolean isDeleted;
 
-    @Column(nullable = true, name = "deleted_at")
-    private LocalDate deleteAt;
+//    @Column(nullable = true, name = "deleted_at")
+//    private LocalDate deleteAt;
 
-    @OneToOne
-    private BoxEntity box;
 
     /*
         생성 패턴: 빌더 패턴, 팩토리 메소드 패턴
      */
 //    @Builder
-    public MemberEntity(Long id, String username, String password, String nickname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    public MemberEntity(String name, String nickname) {
+        this.name = name;
         this.nickname = nickname;
     }
 

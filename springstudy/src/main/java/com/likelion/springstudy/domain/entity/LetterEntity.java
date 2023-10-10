@@ -19,7 +19,7 @@ public class LetterEntity extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
@@ -42,14 +42,9 @@ public class LetterEntity extends BaseTimeEntity {
     @JoinColumn(name = "box_id")    // 실제로는 box_id 컬럼이 생성됨
     private BoxEntity box;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sender_id")
-    private MemberEntity sender;
-
-    public LetterEntity(String title, String content, BoxEntity box, MemberEntity sender) {
+    public LetterEntity(String title, String content, BoxEntity box) {
         this.title = title;
         this.content = content;
         this.box = box;
-        this.sender = sender;
     }
 }
