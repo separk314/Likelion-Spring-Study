@@ -32,4 +32,12 @@ public class LetterService {
     public LetterEntity getById(Long letterId) {
         return letterRepository.findById(letterId).get();
     }
+
+    @Transactional
+    public void updateLetter(Long letterId, LetterCreateRequestDto dto) {
+        LetterEntity letter = letterRepository.findById(letterId).get();
+        letter.updateContent(dto.getContent());
+        letter.updateContent(dto.getTitle());
+        // dirty checking -> update한 후 save할 필요 없다. JPA가 알아서 해줌
+    }
 }

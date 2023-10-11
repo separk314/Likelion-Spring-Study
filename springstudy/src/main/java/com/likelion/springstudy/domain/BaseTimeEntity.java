@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeEntity {
 
-    @CreatedDate
+    @CreatedDate    // DB에 추가될 때 자동으로 시간 저장
     private LocalDateTime createdAt;
 
     @LastModifiedDate

@@ -35,4 +35,13 @@ public class MemberService {
 
         return MemberGetResponseDto.of(member);
     }
+
+    public void deleteById(Long id) {
+        MemberEntity member = memberRepository.findByIdOrThrow(id);
+        member.softDelete();
+    }
+
+    public void recoverMemberInfo(Long memberId) {
+//        member.recover();
+    }
 }

@@ -21,6 +21,10 @@ public class BoxEntity extends BaseTimeEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // id를 path에 쓰면 위험하기 때문에 대신 code를 사용한다
+    @Column(unique = true)
+    private String code;
+
     @Column(nullable = false)
     private String name;
 
