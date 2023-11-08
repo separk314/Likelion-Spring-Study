@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter @Setter
+@Getter
 @Table(name = "member") // 테이블명을 명시하지 않으면 클래스명(Member_Entity)을 테이블명으로 사용
 public class MemberEntity {
 
@@ -20,39 +20,32 @@ public class MemberEntity {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String username;
+    private String name;
 
-    @Column(nullable = false)
-    private String password;
+//    @Column(nullable = false)
+//    private String password;
 
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(nullable = false, length = 20)
     private String nickname;
 
-    @CreatedDate
-    @Column(nullable = false, name = "created_at")
-    private LocalDateTime createdAt;
+//    @Column(nullable = true, name = "is_deleted")
+//    private Boolean isDeleted;
 
-    @LastModifiedDate
-    @Column(nullable = false, name = "updated_at")
-    private LocalDateTime updatedAt;
+//    @Column(nullable = true, name = "deleted_at")
+//    private LocalDate deleteAt;
 
-    @Column(nullable = true, name = "is_deleted")
-    private Boolean isDeleted;
 
-    @Column(nullable = true, name = "deleted_at")
-    private LocalDate deleteAt;
-
-    @OneToOne(mappedBy = "member")
-    private BoxEntity box;
-
-    @OneToMany(mappedBy = "sender")
-    private List<LetterEntity> lettersSent;
-
+    /*
+        생성 패턴: 빌더 패턴, 팩토리 메소드 패턴
+     */
     @Builder
-    public MemberEntity(Long id, String username, String password, String nickname) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
+    public MemberEntity(String name, String nickname) {
+        this.name = name;
+        this.nickname = nickname;
+    }
+
+    // 회원 닉네임 업데이트
+    public void updateNickname(String nickname) {
         this.nickname = nickname;
     }
 }
