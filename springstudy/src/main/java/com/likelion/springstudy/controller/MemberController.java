@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController     // Rest: ResponseBody에서 객체를 JSON으로 변환(serializer)
 @RequestMapping("/api/member")
 @RequiredArgsConstructor    // final로 정의된 생성자(의존성 주입)
@@ -31,9 +33,11 @@ public class MemberController {
 
     /**
      * 회원 삭제(회원 탈퇴)
+     * 권한이 있어야 탈퇴 가능
      */
-    @DeleteMapping("/{memberId}")
-    public ResponseEntity<Void> withdrawMembership(@PathVariable("memberId") Long memberId) {
+    public ResponseEntity<Void> withdrawMembership(Principal principal) {
+        // Principal: 현재 인증된 사용자의 정보를 담고 있는 객체
+        final Long memberId = Long.valueOf(principal.getName());
         memberService.deleteById(memberId);
         return ResponseEntity.ok().build();
     }

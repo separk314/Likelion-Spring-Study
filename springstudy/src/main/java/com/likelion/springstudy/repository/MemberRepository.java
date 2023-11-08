@@ -1,12 +1,11 @@
 package com.likelion.springstudy.repository;
 
 import com.likelion.springstudy.domain.entity.MemberEntity;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
 
 public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
     /*

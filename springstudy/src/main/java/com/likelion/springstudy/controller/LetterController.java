@@ -4,7 +4,6 @@ import com.likelion.springstudy.domain.entity.LetterEntity;
 import com.likelion.springstudy.dto.request.letter.LetterCreateRequestDto;
 import com.likelion.springstudy.service.LetterService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

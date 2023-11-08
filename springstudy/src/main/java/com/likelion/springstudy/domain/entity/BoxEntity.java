@@ -1,12 +1,12 @@
 package com.likelion.springstudy.domain.entity;
 
 import com.likelion.springstudy.domain.BaseTimeEntity;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,8 @@ public class BoxEntity extends BaseTimeEntity {
 
     private static final int DEFAULT_LETTER_LIMIT = 20;
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     // id를 path에 쓰면 위험하기 때문에 대신 code를 사용한다

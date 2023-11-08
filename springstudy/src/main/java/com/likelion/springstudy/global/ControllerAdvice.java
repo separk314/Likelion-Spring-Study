@@ -1,12 +1,12 @@
 package com.likelion.springstudy.global;
 
 import com.likelion.springstudy.global.exception.BusinessException;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
 
 @RestControllerAdvice
 public class ControllerAdvice {
